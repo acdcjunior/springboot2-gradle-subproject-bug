@@ -1,0 +1,4 @@
+rootProject.name = 'sb-bug'
+
+include "sb-bbb"
+include "sb-aaa"

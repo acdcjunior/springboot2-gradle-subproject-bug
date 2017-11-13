@@ -1,0 +1,20 @@
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+buildscript {
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+    }
+}
+
+dependencies {
+    compile project(":sb-bbb")
+    testCompile project(':sb-bbb').sourceSets.test.output // access test files
+
+
+    testCompile group: 'junit', name: 'junit', version: '4.4'
+}
+
+bootJar {
+    enabled = false
+}

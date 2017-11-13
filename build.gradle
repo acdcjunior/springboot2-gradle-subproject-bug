@@ -1,0 +1,34 @@
+allprojects {
+    group = "sb.bug"
+    version = '0.0.1-SNAPSHOT'
+
+    ext {
+        springBootVersion = "2.0.0.M6"
+    }
+
+    buildscript {
+        repositories {
+            mavenLocal()
+            mavenCentral()
+            maven { url "https://repo.spring.io/snapshot" } // required by M6
+            maven { url "https://repo.spring.io/milestone" } // required by M6
+        }
+    }
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven { url "https://repo.spring.io/snapshot" } // required by M6
+        maven { url "https://repo.spring.io/milestone" } // required by M6
+    }
+
+}
+
+subprojects {
+    apply plugin: 'java'
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+    tasks.withType(JavaCompile) {
+        options.encoding = 'UTF-8'
+    }
+}
