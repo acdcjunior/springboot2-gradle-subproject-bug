@@ -1,13 +1,18 @@
-apply plugin: 'org.springframework.boot' // remove this and the problem goes away (also comment the jpa dependency below)
-apply plugin: 'io.spring.dependency-management'
-
 buildscript {
     dependencies {
         classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
     }
 }
 
+apply plugin: "io.spring.dependency-management"
+
+dependencyManagement {
+    imports {
+        // spring-boot-dependencies per https://spring.io/blog/2017/04/05/spring-boot-s-new-gradle-plugin#dependency-management
+        mavenBom "org.springframework.boot:spring-boot-dependencies:${springBootVersion}"
+    }
+}
+
 dependencies {
-    // I cant remove the plugins dependencies above because I want this dependency (example):
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
 }
